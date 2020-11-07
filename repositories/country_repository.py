@@ -6,8 +6,8 @@ from models.city import City
 import repositories.city_repository as city_repository
 
 def save(country):
-    sql = "INSERT INTO countries(name, city_id) VALUES (%s, %s) RETURNING id"
-    values = [country.name, country.city.id]
+    sql = "INSERT INTO countries(name, continent, city_id) VALUES (%s, %s, %s) RETURNING id"
+    values = [country.name, country.continent, country.city.id]
     results = run_sql(sql, values)
     country.id = results[0]['id']
     return country
@@ -21,7 +21,7 @@ def select_all():
 
     for row in results:
         city = city_repository.select(row['city_id'])
-        country = Country(row['name'], city, row['id'])
+        country = Country(row['name'], row['continent'], city, row['id'])
         countries.append(country)
     return countries
 
@@ -34,7 +34,7 @@ def select(id):
 
     if result is not None:
         city = city_repository.select(result['city_id'])
-        country = Country(result['name'], city, result['id'])
+        country = Country(result['name'], result['continent'], city, result['id'])
         return country
 
 
@@ -60,6 +60,6 @@ def delete(id):
 
 
 def update(country):
-    sql = "UPDATE countries SET (name, city_id) = (%s, %s) WHERE id = %s"
-    values = [country.name, country.city.id, country.id]
+    sql = "UPDATE countries SET (name, continent, city_id) = (%s, %s, %s) WHERE id = %s"
+    values = [country.name, country.continent, country.city.id, country.id]
     run_sql(sql, values)
