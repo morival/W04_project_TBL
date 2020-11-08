@@ -12,6 +12,9 @@ import repositories.continent_repository as continent_repository
 # import repositories.sight_repository as sight_repository
 
 
+
+
+
 # Continental regions Setup
 continent_repository.delete_all()
 
@@ -29,6 +32,10 @@ continent6 = Continent('Australia & Oceania')
 continent_repository.save(continent6)
 
 
+# Country Example Setup
+country_repository.delete_all()
 
+country1 = Country('Scotland', continent1)
+country_repository.save(country1)
 
 pdb.set_trace()

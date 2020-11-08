@@ -27,7 +27,7 @@ def select(id):
     result = run_sql(sql, values)[0]
 
     if result is not None:
-        continent = Continent(result['Name'], result['id'])
+        continent = Continent(result['name'], result['id'])
     return continent
 
 def delete_all():

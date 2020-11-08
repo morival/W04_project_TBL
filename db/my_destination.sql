@@ -11,7 +11,7 @@ CREATE TABLE continents (
 CREATE TABLE countries (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255),
-    continents_id INT REFERENCES continents(id) ON DELETE CASCADE
+    continent_id INT REFERENCES continents(id) ON DELETE CASCADE
 );
 
 CREATE TABLE cities (
