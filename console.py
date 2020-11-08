@@ -38,4 +38,11 @@ country_repository.delete_all()
 country1 = Country('Scotland', continent1)
 country_repository.save(country1)
 
+
+# City Example Setup
+city_repository.delete_all()
+
+city1 = City('Edinburgh', country1, False, "Seagulls everywhere!")
+city_repository.save(city1)
+
 pdb.set_trace()

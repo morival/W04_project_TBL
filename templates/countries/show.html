@@ -1,13 +1,13 @@
 {% extends "base.html" %}
-{% block content %}
 
+{% block content %}
 
 <h4> {{ country.continent.name }}</h4>
 <h2> {{country.name}} </h2>
 <a href="/countries/{{ country.id }}/edit">Edit</a>
 <!-- visited status checkbox -->
 <div class="add btn">
-    <a href="/city/new">Add New City</a>
+    <a href="/cities/new">Add New City</a>
 </div>
 {% for city in cities %}
 
@@ -20,11 +20,11 @@
 
 {% endfor %}
     <!-- comment filed -->
-<h3>Sights:</h3>
+<h4>Sights:</h4>
 <ul>
     <!-- sight list -->
 </ul>
-<h3>Activities:</h3>
+<h4>Activities:</h4>
 <ul>
     <!-- activity list -->
 </ul>

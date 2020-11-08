@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
 <h1>Cities</h1>
 
 <table>
@@ -17,9 +18,9 @@
   </tr>
   {% for city in cities %}
   <tr>
-    <td> {{city.name}} </td>
+    <td> <a href="/cities/{{ city.id }}">{{city.name}}</a> </td>
     <td></td>
-    <td> {{city.country.name}} </td>
+    <td> <a href="/countries/{{ city.country.id }}">{{city.country.name}}</a> </td>
     <td></td>
     <td> {{city.visited}} </td>
     <td></td>

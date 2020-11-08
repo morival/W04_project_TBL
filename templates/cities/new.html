@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
+
 <h1>Add a New City</h1>
 
-<form action="/city" method="POST">
+<form action="/cities" method="POST">
   <label for="country">Select a Country:</label>
     <select name="country_id" id="country">
         {% for country in countries %}
@@ -13,6 +14,9 @@
 
   <label for="name">Name of the City:</label>
   <input type="text" id="name" name="name">
+
+  <label for="comment">Comment:</label>
+  <textarea name="comment" id="comment" cols="30" rows="10"></textarea>
   <input class="btn btn--action" type='submit' value="Add">
 </form>
 
