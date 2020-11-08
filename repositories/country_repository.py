@@ -1,13 +1,13 @@
 from db.run_sql import run_sql
 
 from models.country import Country
-from models.city import City
+from models.continent import Continent
 
-import repositories.city_repository as city_repository
+import repositories.continent_repository as continent_repository
 
 def save(country):
-    sql = "INSERT INTO countries(name, continent, city_id) VALUES (%s, %s, %s) RETURNING id"
-    values = [country.name, country.continent, country.city.id]
+    sql = "INSERT INTO countries (name, continent_id) VALUES (%s, %s) RETURNING id"
+    values = [country.name, country.continent.id]
     results = run_sql(sql, values)
     country.id = results[0]['id']
     return country
@@ -20,8 +20,8 @@ def select_all():
     results = run_sql(sql)
 
     for row in results:
-        city = city_repository.select(row['city_id'])
-        country = Country(row['name'], row['continent'], city, row['id'])
+        continent = continent_repository.select(row['continent_id'])
+        country = Country(row['name'], continent, row['id'])
         countries.append(country)
     return countries
 
@@ -33,19 +33,17 @@ def select(id):
     result = run_sql(sql, values)[0]
 
     if result is not None:
-        city = city_repository.select(result['city_id'])
-        country = Country(result['name'], result['continent'], city, result['id'])
-        return country
+        continent = continent_repository.select(result['continent_id'])
+        country = Country(result['name'], continent, result['id'])
+    return country
 
 
-### select city from existing cities
+### Add City to Cities
 
-# def city(country):
-#     sql = "SELECT * FROM cities WHERE id = %s"
-#     values = [country.city.id]
-#     results = run_sql(sql, values)[0]
-#     city = City(results['name'], results['visited'], results['comment'], results['sight'], results['activity'], results['id'])
-#     return city
+# def cities(country):
+#     cities = []
+
+#     sql = "SELECT cities.* FROM cities INNER JOIN ..."
 
 
 def delete_all():
@@ -60,6 +58,6 @@ def delete(id):
 
 
 def update(country):
-    sql = "UPDATE countries SET (name, continent, city_id) = (%s, %s, %s) WHERE id = %s"
-    values = [country.name, country.continent, country.city.id, country.id]
+    sql = "UPDATE countries SET (name, continent_id) = (%s, %s) WHERE id = %s"
+    values = [country.name, country.continent.id, country.id]
     run_sql(sql, values)
