@@ -2,7 +2,7 @@
 {% block content %}
 
 <h2>Update a Country</h2>
-
+<h4> {{ country.continent.name }}</h4>
 <form action="/countries/{{ country.id }}" method="POST">
     <div>
         <label for="name">Name:</label>

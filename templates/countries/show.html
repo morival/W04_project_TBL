@@ -1,11 +1,24 @@
-{% extends 'base.html' %}
-
+{% extends "base.html" %}
 {% block content %}
-<h1> {{country.name}} </h1>
-<!-- visited status checkbox -->
-<p> {{ country.continent }}</p>
 
-<h3>Comment</h3>
+
+<h4> {{ country.continent.name }}</h4>
+<h2> {{country.name}} </h2>
+<a href="/countries/{{ country.id }}/edit">Edit</a>
+<!-- visited status checkbox -->
+<div class="add btn">
+    <a href="/city/new">Add New City</a>
+</div>
+{% for city in cities %}
+
+<section>
+    <a href="/cities/{{ city.id }}">{{ city.name }}</a>
+    <form action="/cities/{{ city.id }}/delete" method="POST">
+        <input type="submit" value="Delete">
+    </form>
+</section>
+
+{% endfor %}
     <!-- comment filed -->
 <h3>Sights:</h3>
 <ul>
