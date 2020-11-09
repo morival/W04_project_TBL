@@ -37,7 +37,8 @@ def create_country():
     continent = continent_repository.select(continent_id)
     new_country = Country(name, continent)
     country_repository.save(new_country)
-    return redirect("countries")
+    country_id = new_country.id
+    return redirect(f"/countries/{country_id}")
 
 
     # EDIT
