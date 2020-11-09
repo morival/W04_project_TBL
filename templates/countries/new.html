@@ -5,13 +5,15 @@
 <h1>Add a New Country</h1>
 
 <form action="/countries" method="POST">
+  <!-- continent dropbox -->  
   <label for="continent">Select a Continent:</label>
-    <select name="continent_id" id="continent">
-        {% for continent in continents %}
-        <option value="{{ continent.id }}">{{ continent.name }}</option>
-        {% endfor %}
-    </select>
-
+  <select name="continent_id" id="continent">
+      {% for continent in continents %}
+      <option value="{{ continent.id }}">{{ continent.name }}</option>
+      {% endfor %}
+  </select>
+  <br>
+  <!-- country field -->
   <label for="name">Name of the Country:</label>
   <input type="text" id="name" name="name" required autofocus>
   <input class="btn btn--action" type='submit' value="Add">

@@ -19,18 +19,21 @@
         </td>
     </tr>
 </table>
-
-
-
 <!-- visited status checkbox -->
-<!-- <p> {{ city.visited }}</p> -->
-
+<div>
+    <label for="visited">Visited?</label>
+    <input type="checkbox" name="visited" id="visited" value= "{{ city.visited }}">
+</div>
+<hr>
+<!-- comment -->
 <h4>Comment</h4>
-    {{ city.comment }}
+{{ city.comment }}
+<hr>
 <h4>Sights:</h4>
 <ul>
     <!-- sight list -->
 </ul>
+<hr>
 <h4>Activities:</h4>
 <ul>
     <!-- activity list -->

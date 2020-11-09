@@ -8,7 +8,9 @@
         <label for="continent"> Continent: </label>
         <select name="continent_id" id="continent">
             {% for continent in continents %}
-            <option value="{{ continent.id }}">{{ continent.name }}</option>
+            <option value="{{ continent.id }}" {% if sel_continent == continent.id %}
+            selected="selected"
+          {% endif %}>{{ continent.name }}</option>
             {% endfor %}
         </select>
         <label for="name">Name:</label>

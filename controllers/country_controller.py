@@ -46,7 +46,8 @@ def create_country():
 def edit_country(id):
     continents = continent_repository.select_all()
     country = country_repository.select(id)
-    return render_template("countries/edit.html", country=country, continents=continents)
+    sel_continent = country.continent.id
+    return render_template("countries/edit.html", country=country, sel_continent=sel_continent, continents=continents)
 
 
     # UPDATE
@@ -57,7 +58,8 @@ def update_country(id):
     continent = continent_repository.select(continent_id)
     country = Country(name, continent, id)
     country_repository.update(country)
-    return redirect("/countries")
+    country_id = country.id
+    return redirect(f"/countries/{country_id}")
 
 
     # DELETE '/countries/<id>'

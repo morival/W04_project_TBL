@@ -60,13 +60,14 @@ def edit_city(id):
 def update_city(id):
     name = request.form['name']
     city = city_repository.select(id)
+    city_id = city.id
     country_id = city.country.id
     country = country_repository.select(country_id)
     visited = False
     comment = request.form['comment']
-    city = City(name, country, visited, comment, id)
-    city_repository.update(city)
-    return redirect(f"/countries/{country_id}")
+    updated_city = City(name, country, visited, comment, id)
+    city_repository.update(updated_city)
+    return redirect(f"/cities/{city_id}")
 
 
     # DELETE
