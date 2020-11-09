@@ -2,9 +2,26 @@
 
 {% block content %}
 
-<h4> {{city.country.name}} </h4>
-<h2> {{city.name}} </h2>
-<a href="/cities/{{ city.id }}/edit">Edit</a>
+<table>
+    <tr>
+        <td>
+            <h4>({{ city.country.name }})</h4>
+        </td>
+        <td>
+            <h2> {{city.name}} </h2>
+        </td>
+        <td>
+            <a href="/cities/{{ city.id }}/edit">Edit Name</a>
+        </td>
+        <td>
+            <form action="/cities/{{ city.id }}/delete" method="POST">
+                <input type="submit" value="Delete">
+        </td>
+    </tr>
+</table>
+
+
+
 <!-- visited status checkbox -->
 <!-- <p> {{ city.visited }}</p> -->
 

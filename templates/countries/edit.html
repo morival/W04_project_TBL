@@ -3,9 +3,14 @@
 {% block content %}
 
 <h2>Update a Country</h2>
-<h4> {{ country.continent.name }}</h4>
 <form action="/countries/{{ country.id }}" method="POST">
     <div>
+        <label for="continent"> Continent: </label>
+        <select name="continent_id" id="continent">
+            {% for continent in continents %}
+            <option value="{{ continent.id }}">{{ continent.name }}</option>
+            {% endfor %}
+        </select>
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" value="{{ country.name }}">
         <input type="submit">

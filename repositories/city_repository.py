@@ -48,7 +48,22 @@ def delete(id):
     values = [id]
     run_sql(sql, values)
 
+
 def update(city):
     sql = "UPDATE cities SET (name, country_id, visited, comment) = (%s, %s, %s, %s) WHERE id = %s"
     values = [city.name, city.country.id, city.visited, city.comment, city.id]
     run_sql(sql, values)
+
+
+def cities(id):
+    cities = []
+
+    sql = "SELECT * FROM cities WHERE country_id = %s ORDER by name ASC"
+    values = [id]
+    results = run_sql(sql, values)
+
+    for row in results:
+        country = country_repository.select(row['country_id'])
+        city = City(row['name'], country, row['visited'], row['comment'], row['id'])
+        cities.append(city)
+    return cities
