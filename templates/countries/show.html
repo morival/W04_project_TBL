@@ -6,7 +6,7 @@
     <tr>
         <td>
             <div class="add btn">
-                <a href="/cities/new">Add New City in:</a>
+                <a href="/cities/{{ country.id }}/new">Add New City in:</a>
             </div>
         </td>
         <td>
@@ -30,13 +30,23 @@
 {% for city in cities %}
 
 <section>
-    <a href="/cities/{{ city.id }}">{{ city.name }}</a>
-    <form action="/cities/{{ city.id }}/delete" method="POST">
-        <input type="submit" value="Delete">
-    </form>
-    <hr>
+    <table>
+        <tr>
+            <td>
+                <a href="/cities/{{ city.id }}">{{ city.name }}</a>
+            </td>
+            <td>
+                <p>{{ city.comment }}</p>
+            </td>
+            <td>
+                <form action="/cities/{{ city.id }}/delete" method="POST">
+                    <input type="submit" value="Delete">
+                </form>
+            </td>
+        </tr>
+    </table>
 </section>
-
+<hr>
 {% endfor %}
     <!-- comment filed -->
 <h4>Sights:</h4>

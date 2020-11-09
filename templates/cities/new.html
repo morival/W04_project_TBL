@@ -6,15 +6,20 @@
 
 <form action="/cities" method="POST">
   <label for="country">Select a Country:</label>
+  <!-- country dropbox -->
     <select name="country_id" id="country">
         {% for country in countries %}
-        <option value="{{ country.id }}">{{ country.name }}</option>
+        <option value="{{ country.id }}" {% if sel_country.id == country.id %}
+          selected="selected"
+        {% endif %}>
+          {{ country.name }}
+        </option>
         {% endfor %}
     </select>
-
+<!-- name field -->
   <label for="name">Name of the City:</label>
-  <input type="text" id="name" name="name">
-
+  <input type="text" id="name" name="name" required autofocus>
+<!-- comment field-->
   <label for="comment">Comment:</label>
   <textarea name="comment" id="comment" cols="30" rows="10"></textarea>
   <input class="btn btn--action" type='submit' value="Add">
