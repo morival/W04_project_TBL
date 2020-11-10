@@ -22,7 +22,9 @@
 <!-- visited status checkbox -->
 <div>
     <label for="visited">Visited?</label>
-    <input type="checkbox" name="visited" id="visited" value= "{{ city.visited }}">
+    <form action="visit-form" action="/cities/{{ city.id }}/visited" method="POST">
+        <button class="ok-btn"><i class="fas fa-check-circle" style="color: green" aria-hidden="true"></i></button>
+    </form>
 </div>
 <hr>
 <!-- comment -->
