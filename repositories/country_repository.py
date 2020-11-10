@@ -6,8 +6,8 @@ from models.continent import Continent
 import repositories.continent_repository as continent_repository
 
 def save(country):
-    sql = "INSERT INTO countries (name, continent_id) VALUES (%s, %s) RETURNING id"
-    values = [country.name, country.continent.id]
+    sql = "INSERT INTO countries (name, continent_id, visited) VALUES (%s, %s, %s) RETURNING id"
+    values = [country.name, country.continent.id, country.visited]
     results = run_sql(sql, values)
     country.id = results[0]['id']
     return country
@@ -21,7 +21,7 @@ def select_all():
 
     for row in results:
         continent = continent_repository.select(row['continent_id'])
-        country = Country(row['name'], continent, row['id'])
+        country = Country(row['name'], continent, row['visited'], row['id'])
         countries.append(country)
     return countries
 
@@ -34,7 +34,7 @@ def select(id):
 
     if result is not None:
         continent = continent_repository.select(result['continent_id'])
-        country = Country(result['name'], continent, result['id'])
+        country = Country(result['name'], continent, result['visited'], result['id'])
     return country
 
 
@@ -52,21 +52,8 @@ def delete(id):
 
 
 def update(country):
-    sql = "UPDATE countries SET (name, continent_id) = (%s, %s) WHERE id = %s"
-    values = [country.name, country.continent.id, country.id]
+    sql = "UPDATE countries SET (name, continent_id, visited) = (%s, %s, %s) WHERE id = %s"
+    values = [country.name, country.continent.id, country.visited, country.id]
     run_sql(sql, values)
 
 
-# def country_dictionary():
-#     country_dictionary = {}
-
-#     sql = "SELECT * FROM countries"
-#     results = run_sql(sql)
-
-#     for row in results:
-#         continent = continent_repository.select(row['continent_id'])
-#         country = Country(row['name'], continent, row['id'])
-#         country_dictionary.update(country)
-
-
-#     return country_dictionary

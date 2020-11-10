@@ -35,7 +35,7 @@ continent_repository.save(continent6)
 # Country Example Setup
 country_repository.delete_all()
 
-country1 = Country('Scotland', continent1)
+country1 = Country('Scotland', continent1, False)
 country_repository.save(country1)
 
 
@@ -44,5 +44,8 @@ city_repository.delete_all()
 
 city1 = City('Edinburgh', country1, False, "Seagulls everywhere!")
 city_repository.save(city1)
+
+city2 = City('Glasgow', country1, False, "Deepfried Mars Bar")
+city_repository.save(city2)
 
 pdb.set_trace()

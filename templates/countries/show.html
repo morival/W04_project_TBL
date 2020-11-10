@@ -14,6 +14,9 @@
             <a href="/countries/{{ country.id }}/edit"><i class="fas fa-edit" style="color: black;"></i></a>
         </td>
         <td>
+            {{country.visited}}
+        </td>
+        <td>
             <form action="/countries/{{ country.id }}/delete" method="POST">
                 <button type="submit" class="btn btn--action"><i class="fas fa-trash-alt" style="color: red;"></i></button>
             </form>

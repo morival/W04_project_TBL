@@ -12,10 +12,6 @@ countries_blueprint = Blueprint("countries", __name__)
 def countries():
     countries = country_repository.select_all()
     cities = city_repository.select_all()
-    # countries_cities = {}
-    # for country in countries:
-    #     countries_cities.append(country)
-    # cities = city_repository.cities(id)
     return render_template("countries/index.html", countries=countries, cities=cities)
 
 
@@ -40,7 +36,8 @@ def create_country():
     continent_id = request.form['continent_id']
     name = request.form["name"]
     continent = continent_repository.select(continent_id)
-    new_country = Country(name, continent)
+    visited = False
+    new_country = Country(name, continent, visited)
     country_repository.save(new_country)
     country_id = new_country.id
     return redirect(f"/countries/{country_id}")
@@ -61,8 +58,10 @@ def update_country(id):
     name = request.form['name']
     continent_id = request.form['continent_id']
     continent = continent_repository.select(continent_id)
-    country = Country(name, continent, id)
-    country_repository.update(country)
+    country = country_repository.select(id)
+    visited = country.visited
+    updated_country = Country(name, continent, visited, id)
+    country_repository.update(updated_country)
     country_id = country.id
     return redirect(f"/countries/{country_id}")
 

@@ -101,6 +101,8 @@ def visit(id):
     visited = True
     visit_city = City(name, country, visited, comment, id)
     city_repository.update(visit_city)
+    visit_city.country.visited = True
+    country_repository.update(visit_city.country)
     return redirect(f"/cities/{city_id}")
 
 
