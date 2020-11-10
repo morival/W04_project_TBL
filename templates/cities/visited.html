@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<h2>All Cities</h2>
+<h2>Visited Cities</h2>
 <div>
   <a href="/cities">All</a>
 </div>
@@ -14,7 +14,7 @@
 </div>
 <hr>
 
-{% for city in cities %}
+{% for city in visited_cities %}
 
 <section>
   <table>
@@ -42,7 +42,7 @@
         <form action="/cities/{{ city.id }}/delete" method="POST">
           <button type="submit" class="btn btn--action">
             <i class="fas fa-trash-alt" style="color: red;"></i>
-          </button>
+        </button>
         </form>
       </td>
     </tr>

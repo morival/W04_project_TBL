@@ -5,28 +5,28 @@
 <table>
     <tr>
         <td>
-            <div class="add btn">
-                <a href="/cities/{{ country.id }}/new">Add New City in:</a>
-            </div>
-        </td>
-        <td>
             <h4>({{ country.continent.name }})</h4>
         </td>
         <td>
             <h2> {{country.name}} </h2>
         </td>
         <td>
-            <a href="/countries/{{ country.id }}/edit">Edit Name</a>
+            <a href="/countries/{{ country.id }}/edit"><i class="fas fa-edit" style="color: black;"></i></a>
         </td>
         <td>
             <form action="/countries/{{ country.id }}/delete" method="POST">
-                <input type="submit" value="Delete">
+                <button type="submit" class="btn btn--action"><i class="fas fa-trash-alt" style="color: red;"></i></button>
             </form>
         </td>
     </tr>
 </table>
 <!-- visited status checkbox -->
 <hr>
+<div>
+    <button type="button" class="btn btn--action">
+        <a href="/cities/{{ country.id }}/new"><i class="fas fa-plus-square" style="color: orange;"></i></a>
+    </button>
+</div>
 {% for city in cities %}
 <section>
     <table>
@@ -38,8 +38,18 @@
                 <p>{{ city.comment }}</p>
             </td>
             <td>
+                <div class="not-visited" style="display: {{ 'none' if city.visited == true }};">
+                    <i class="fas fa-times" style="color: red"></i>
+                    <label for="visited">Not Visited</label>
+                </div>
+                <div class="visited" style="display: {{ 'none' if city.visited == false }};">
+                    <i class="fas fa-check-circle" style="color: green"></i>
+                    <label for="visited">Visited</label>
+                </div>
+            </td>
+            <td>
                 <form action="/cities/{{ city.id }}/delete" method="POST">
-                    <input type="submit" value="Delete">
+                    <button type="submit" class="btn btn--action"><i class="fas fa-trash-alt" style="color: red;"></i></button>
                 </form>
             </td>
         </tr>

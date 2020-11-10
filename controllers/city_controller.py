@@ -20,16 +20,36 @@ def show_city(id):
     return render_template("cities/show.html", city=city)
 
 
-    # NEW
-@cities_blueprint.route("/cities/new", methods=['GET'])
-def new_city():
-    countries = country_repository.select_all()
-    return render_template("cities/new.html", countries=countries)
+    # SHOW VISITED
+@cities_blueprint.route("/cities/visited")
+def visited_cities():
+    visited_cities = []
+    cities = city_repository.select_all()
+    for city in cities:
+        if city.visited == True:
+            visited_cities.append(city)
+    return render_template("cities/visited.html", visited_cities=visited_cities)
 
 
-    # NEW (in)
+    # SHOW NOT VISITED
+@cities_blueprint.route("/cities/not-visited")
+def not_visited_cities():
+    not_visited_cities = []
+    cities = city_repository.select_all()
+    for city in cities:
+        if city.visited == False:
+            not_visited_cities.append(city)
+    return render_template("cities/not-visited.html", not_visited_cities=not_visited_cities)
+#     # NEW
+# @cities_blueprint.route("/cities/new", methods=['GET'])
+# def new_city():
+#     countries = country_repository.select_all()
+#     return render_template("cities/new.html", countries=countries)
+
+
+    # NEW 
 @cities_blueprint.route("/cities/<id>/new")
-def new_city_in(id):
+def new_city(id):
     sel_country = country_repository.select(id)
     countries = country_repository.select_all()
     return render_template("cities/new.html", sel_country=sel_country, countries=countries)
@@ -63,10 +83,24 @@ def update_city(id):
     city_id = city.id
     country_id = city.country.id
     country = country_repository.select(country_id)
-    visited = False
+    visited = city.visited
     comment = request.form['comment']
     updated_city = City(name, country, visited, comment, id)
     city_repository.update(updated_city)
+    return redirect(f"/cities/{city_id}")
+
+
+    # VISIT 
+@cities_blueprint.route("/cities/<id>/visit", methods=['POST'])
+def visit(id):
+    city = city_repository.select(id)
+    city_id = city.id
+    name = city.name
+    country = city.country
+    comment = city.comment
+    visited = True
+    visit_city = City(name, country, visited, comment, id)
+    city_repository.update(visit_city)
     return redirect(f"/cities/{city_id}")
 
 

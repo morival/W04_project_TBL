@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<h2>All Cities</h2>
+<h2>Not Visited Cities</h2>
 <div>
   <a href="/cities">All</a>
 </div>
@@ -14,7 +14,7 @@
 </div>
 <hr>
 
-{% for city in cities %}
+{% for city in not_visited_cities %}
 
 <section>
   <table>

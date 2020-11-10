@@ -38,12 +38,6 @@ def select(id):
     return country
 
 
-### Add City to Cities
-
-# def cities(country):
-#     cities = []
-
-#     sql = "SELECT cities.* FROM cities INNER JOIN ..."
 
 
 def delete_all():
@@ -61,3 +55,18 @@ def update(country):
     sql = "UPDATE countries SET (name, continent_id) = (%s, %s) WHERE id = %s"
     values = [country.name, country.continent.id, country.id]
     run_sql(sql, values)
+
+
+# def country_dictionary():
+#     country_dictionary = {}
+
+#     sql = "SELECT * FROM countries"
+#     results = run_sql(sql)
+
+#     for row in results:
+#         continent = continent_repository.select(row['continent_id'])
+#         country = Country(row['name'], continent, row['id'])
+#         country_dictionary.update(country)
+
+
+#     return country_dictionary
