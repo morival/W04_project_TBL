@@ -66,6 +66,35 @@ def update_country(id):
     return redirect(f"/countries/{country_id}")
 
 
+    # SEARCH
+@countries_blueprint.route("/search", methods=['GET'])
+def search():
+    continents = continent_repository.select_all()
+    countries = country_repository.select_all()
+    cities = city_repository.select_all()
+    return render_template("search.html",continents=continents, countries=countries, cities=cities)
+
+
+    # SEARCH RESULTS
+@countries_blueprint.route("/search", methods=['POST'])
+def search_results():
+    search_country = []
+    search_city = []
+    search_key = request.form['search']
+    key = search_key.lower()
+    countries = country_repository.select_all()
+    cities = city_repository.select_all()
+    for country in countries:
+        if country.name.lower() == key:
+            search_country.append(country)
+    for city in cities:
+        if city.name.lower() == key:
+            search_city.append(city)
+        elif city.country.name.lower() == key:
+            search_city.append(city)
+    return render_template("/search.html",countries=countries, cities=cities, search_city=search_city, search_country=search_country)
+
+
     # DELETE '/countries/<id>'
 @countries_blueprint.route("/countries/<id>/delete", methods=['POST'])
 def delete_country(id):

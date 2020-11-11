@@ -38,8 +38,6 @@ def select(id):
     return country
 
 
-
-
 def delete_all():
     sql = "DELETE FROM countries"
     run_sql(sql)

@@ -20,27 +20,23 @@
                 <nav>
                     <ul class="menu">
                         <li><a href="/">Home</a></li>
-                        <!-- <li><a href="/search">Search</a></li> -->
+                        <li><a href="/search">Search</a></li>
                         <li><a href="/cities/not-visited"> Plan To Visit</a></li>
                         <li><a href="/cities/visited">Visited</a></li>
-                        <li><a href="/countries/new">Add New Country</a></li>
+                        <li><a href="/countries/new">Add New Place</a></li>
                         <!-- <li><a href="/help">Help</a></li> -->
                     </ul>
                 </nav>
             </span>
         </div>
         <H1>My Destination App</H1>
+        <!-- Search Icon -->
         <div class="search-btn">
-            <button class="btn btn--action">
-                <label for="show-search"><i class="fas fa-search"></i></label>
+            <button type="button" class="btn btn--action">
+                <a href="/search"><i class="fas fa-search" style="color: black;"></i></a>
             </button>
         </div>
     </header>
-    <div class="hide-search">
-        <div class="search-container">
-
-        </div>
-    </div>
     <main>
         <div class="container">
             {% block content %}
