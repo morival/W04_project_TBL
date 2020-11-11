@@ -1,7 +1,6 @@
 from db.run_sql import run_sql
 
 from models.country import Country
-from models.continent import Continent
 
 import repositories.continent_repository as continent_repository
 
