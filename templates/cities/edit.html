@@ -2,23 +2,20 @@
 
 {% block content %}
 
-<h2>Update a City</h2>
-<h4> {{ city.country.name }}</h4>
+<h2>Edit City</h2>
+<h4>in {{ city.country.name }}</h4>
 <form action="/cities/{{ city.id }}" method="POST">
-    <div>
-        <!-- <label for="country"> Country: </label>
-        <select name="country_id" id="country">
-            {% for country in countries %}
-            <option value="{{ country.id }}">{{ country.name }}</option>
-            {% endfor %}
-        </select> -->
+    <div class="central">
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" value="{{ city.name }}">
-        
-        <label for="comment">Comment:</label>
-        <textarea name="comment" id="comment" cols="30" rows="10">{{ city.comment }}</textarea>
-        <input type="submit">
+        <button type="submit" class="btn btn--action">
+            <i class="far fa-plus-square" style="color: rgb(28, 111, 28);"></i>
+        </button>
     </div>
+    <br>
+    <label for="comment">Comment:</label>
+    <br>
+<textarea name="comment" id="comment" cols="30" rows="10">{{ city.comment }}</textarea>
 </form>
 
 {% endblock %}

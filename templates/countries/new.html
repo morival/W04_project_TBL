@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<h1>Add a New Country</h1>
+<h2>Add a New Country</h2>
 
 <form action="/countries" method="POST">
   <!-- continent dropbox -->  
@@ -14,9 +14,13 @@
   </select>
   <br>
   <!-- country field -->
-  <label for="name">Name of the Country:</label>
-  <input type="text" id="name" name="name" required autofocus>
-  <button type="submit" class="btn btn--action"><i class="fas fa-plus-square" style="color: orange;"></i></button>
+  <div class="central">
+    <label for="name">Name of the Country:</label>
+    <input type="text" id="name" name="name" required autofocus>
+    <button type="submit" class="btn btn--action">
+      <i class="far fa-plus-square" style="color: rgb(28, 111, 28);"></i>
+    </button>
+  </div>
 </form>
 
 {% endblock %}

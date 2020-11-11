@@ -2,28 +2,27 @@
 
 {% block content %}
 
-<ul>
-    <li>
-        <div class="tab-container">
+<section>
+    <div class="city-container">
+        <div class="place-link">
+            <a href="/cities">Show Cities</a>
+        </div>
+    </div>
+</section>
+<br>
+<section>
+    <div class="city-container">
+        <div class="place-link">
             <a href="/countries">Show Countries</a>
         </div>
-    </li>
-    <li>
-        <div class="tab-container">
+    </div>
+</section>
+<br>
+<section>
+    <div class="city-container">
+        <div class="place-link">
             <a href="/countries/new">Add New Country</a>
         </div>
-    </li>
-    <li>
-        <div class="tab-container">
-            <a href="/cities/visited">Cities You Visited</a>
-        </div>
-    </li>
-    <li>
-        <div class="tab-container">
-            <a href="/cities/not-visited">Cities You Plan to Visit</a>
-        </div>
-    </li>
-</ul>
-This will be the home page. 
-
+    </div>
+</section>
 {% endblock %}

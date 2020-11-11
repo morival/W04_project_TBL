@@ -2,9 +2,9 @@
 
 {% block content %}
 
-<h2>Update a Country</h2>
+<h2>Edit Country</h2>
 <form action="/countries/{{ country.id }}" method="POST">
-    <div>
+    <div class="central">
         <label for="continent"> Continent: </label>
         <select name="continent_id" id="continent">
             {% for continent in continents %}
@@ -13,9 +13,14 @@
           {% endif %}>{{ continent.name }}</option>
             {% endfor %}
         </select>
+    </div>
+    <br>
+    <div class="central">
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" value="{{ country.name }}">
-        <input type="submit">
+        <button type="submit" class="btn btn--action">
+            <i class="far fa-plus-square" style="color: rgb(28, 111, 28);"></i>
+        </button>
     </div>
 </form>
 

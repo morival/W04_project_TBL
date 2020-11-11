@@ -1,38 +1,38 @@
 {% extends "base.html" %}
 
 {% block content %}
-
-<table>
-    <tr>
-        <td>
-            <h4>(<a href="/countries/{{ city.country.id }}">{{ city.country.name }}</a>)</h4>
-        </td>
-        <td>
-            <h2> {{city.name}} </h2>
-        </td>
-        <td>
-            <button class="btn btn--action">
-                <a href="/cities/{{ city.id }}/edit"><i class="fas fa-edit" style="color: black;"></i></a>
-            </button>
-        </td>
-        <td>
-            <form action="/cities/{{ city.id }}/delete" method="POST">
-                <button type="submit" class="btn btn--action"><i class="fas fa-trash-alt" style="color: red;"></i></button>
-            </form>
-        </td>
-    </tr>
-</table>
-<!-- visited status -->
-<div class="not-visited" style="display: {{ 'none' if city.visited == true }};">
-    <i class="fas fa-times" style="color: red"></i>
-    <label for="visited">Not Visited</label>
-    <form action="/cities/{{ city.id }}/visit" method="POST">
-        <input type="submit" value="Click here if visited">
-    </form>
+<!-- City line -->
+<div class="central">
+    <div class="return-btn">
+        <a href="/countries/{{ city.country.id }}">({{ city.country.name }})</a>
+    </div>
+    <div>
+        <h2> {{city.name}} </h2>
+    </div>
+    <div>
+        <button class="btn btn--action">
+            <a href="/cities/{{ city.id }}/edit"><i class="fas fa-edit" style="color: black;"></i></a>
+        </button>
+    </div>
+    <div>
+        <form action="/cities/{{ city.id }}/delete" method="POST">
+            <button type="submit" class="btn btn--action"><i class="fas fa-trash-alt" style="color: red;"></i></button>
+        </form>
+    </div>
 </div>
-<div class="visited" style="display: {{ 'none' if city.visited == false }};">
-    <i class="fas fa-check-circle" style="color: green"></i>
-    <label for="visited">Visited</label>
+<!-- visited status -->
+<div class="visit">
+    <div class="not-visited" style="display: {{ 'none' if city.visited == true }};">
+        <i class="fas fa-times" style="color: red"></i>
+        <label for="visited">Not Visited</label>
+        <form action="/cities/{{ city.id }}/visit" method="POST">
+            <input type="submit" value="Click here if visited">
+        </form>
+    </div>
+    <div class="visited" style="display: {{ 'none' if city.visited == false }};">
+        <i class="fas fa-check-circle" style="color: green"></i>
+        <label for="visited">Visited</label>
+    </div>
 </div>
 <hr>
 <!-- comment -->

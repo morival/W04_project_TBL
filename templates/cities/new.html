@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<h1>Add a New City</h1>
+<h2>Add a New City</h2>
 
 <form action="/cities" method="POST">
   <!-- country dropbox -->
@@ -18,14 +18,20 @@
     </select>
     <br>
   <!-- name field -->
-    <label for="name">Name of the City:</label>
-    <input type="text" id="name" name="name" required autofocus>
+    <div class="central">
+      <label for="name">Name of the City:</label>
+      <input type="text" id="name" name="name" required autofocus>
+      <button type="submit" class="btn btn--action">
+        <i class="far fa-plus-square" style="color: rgb(28, 111, 28);"></i>
+      </button>
+    </div>
+    
   <!-- visited checkbox -->
     <br>
   <!-- comment field-->
     <label for="comment">Comment:</label>
     <textarea name="comment" id="comment" cols="30" rows="10"></textarea>
-    <input class="btn btn--action" type='submit' value="Add">
+    
 </form>
 
 {% endblock %}
