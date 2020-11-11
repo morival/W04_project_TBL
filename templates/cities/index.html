@@ -3,29 +3,40 @@
 {% block content %}
 
 <h2>All Cities</h2>
-<div>
-  <a href="/cities">All</a>
-</div>
-<div >
-  <a href="/cities/visited">Visited</a>
-</div>
-<div>
-  <a href="/cities/not-visited">Not Visited</a>
+
+<!-- ALL / VISITED / NOT VISITED buttons -->
+<div class="central">
+  <div class="central-btn">
+    <a href="/cities">All</a>
+  </div>
+  <div class="central-btn">
+    <a href="/cities/visited">Visited</a>
+  </div>
+  <div class="central-btn">
+    <a href="/cities/not-visited">Not Visited</a>
+  </div>
 </div>
 <hr>
 
-{% for city in cities %}
+<!-- ADD button -->
+<div class="add-container">
+  <button type="button" class="btn btn--action">
+      <a href="/countries"><i class="fas fa-plus-square" style="color: orange;"></i></a>
+  </button>
+  <h4>(To add new city select country a first)</h4>
+</div>
 
-<section>
-  <table>
-    <tr>
-      <td> 
+<!-- List of Cities -->
+{% for city in cities %}
+<section style="border-color: {{ 'green' if city.visited == true else 'red'}};">
+  <div class="panel-container">
+      <div class="country-container">
         <h4>({{ city.country.name }})</h4> 
-      </td>
-      <td> 
+      </div>
+      <div class="place-link">
         <a href="/cities/{{ city.id }}">{{ city.name }}</a>
-      </td>
-      <td> 
+      </div>
+      <div class="visit">
         <div class="not-visited" style="display: {{ 'none' if city.visited == true }};">
           <i class="fas fa-times" style="color: red"></i>
           <label for="visited">Not Visited</label>
@@ -34,19 +45,18 @@
           <i class="fas fa-check-circle" style="color: green"></i>
           <label for="visited">Visited</label>
         </div>
-      </td>
-      <td> 
+      </div>
+      <div class="comment-container">
         {{ city.comment }} 
-      </td>
-      <td>
+      </div>
+      <div class="trash">
         <form action="/cities/{{ city.id }}/delete" method="POST">
           <button type="submit" class="btn btn--action">
             <i class="fas fa-trash-alt" style="color: red;"></i>
           </button>
         </form>
-      </td>
-    </tr>
-  </table>
+      </div>
+  </div>
 </section>
 {% endfor %}
 

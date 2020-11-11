@@ -1,3 +1,110 @@
 body {
     background-color: lightblue;
 }
+header {
+    display: flex;
+}
+.main-header {
+    display: flex;
+}
+.central {
+    display: flex;
+}
+.central-btn {
+    background-color: rgba(22, 22, 187, 0.824);
+    font-size: 20px;
+    border-style: groove;
+    border-width: 2px;
+    border-color: darkslateblue;
+    border-radius: 7px;
+    margin: 3px;
+    padding: 2px 20px;
+    transition-duration: 0.5s;
+}
+.central-btn:hover {
+    background-color: blueviolet;
+
+}
+
+.central-btn a {
+    color: white;
+    text-decoration: none;
+}
+.btn {
+    height: 40px;
+    width: 40px;
+    background-color: transparent;
+    border: none;
+}
+.btn a {
+    font-size: 30px;
+}
+.btn i {
+    font-size: 30px;
+}
+.fas {
+    font-size: 30px;
+    margin: 10px;
+}
+.add-container {
+    display: flex;
+    align-items: center;
+}
+section {
+    background-color: rgb(255, 144, 103);
+    width: 550px;
+    border-style: solid;
+    border-width: 4px;
+    /* border-color:red; */
+    border-radius: 20px;
+    margin:2px;
+}
+.panel-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+/* Parent's name */
+.continent-container {
+    margin-left: 10px;
+}
+.country-container {
+    margin-left: 10px;
+}
+/* Object's name */
+.place-link {
+    padding: 2px;
+}
+.place-link a {
+    color: darkslateblue;
+    text-decoration: none;
+    font-size: 25px;
+    font-weight: bold;
+    transition-duration: 0.6s;
+}
+.place-link a:hover {
+    color: black
+}
+/* Children names */
+.cities-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+.comment-container {
+    height: 50px;
+}
+.visited {
+    display: flex;
+    align-items: center;
+}
+.not-visited {
+    display: flex;
+    align-items: center;
+}
+/* Delete button */
+.trash {
+    margin-right: 10px;
+}
+#show,#content{display:none;}
+#show:checked~#content{display:block;}
+

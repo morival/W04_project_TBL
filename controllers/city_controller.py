@@ -40,11 +40,6 @@ def not_visited_cities():
         if city.visited == False:
             not_visited_cities.append(city)
     return render_template("cities/not-visited.html", not_visited_cities=not_visited_cities)
-#     # NEW
-# @cities_blueprint.route("/cities/new", methods=['GET'])
-# def new_city():
-#     countries = country_repository.select_all()
-#     return render_template("cities/new.html", countries=countries)
 
 
     # NEW 

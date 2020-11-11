@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS sights;
 DROP TABLE IF EXISTS cities;
 DROP TABLE IF EXISTS countries;
 DROP TABLE IF EXISTS continents;
@@ -22,3 +23,11 @@ CREATE TABLE cities (
     visited BOOLEAN,
     comment TEXT
 );
+
+CREATE TABLE sights (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255),
+    city_id INT REFERENCES cities(id) ON DELETE CASCADE,
+    visited BOOLEAN,
+    comment TEXT
+)

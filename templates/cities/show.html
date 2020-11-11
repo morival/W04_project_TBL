@@ -11,7 +11,9 @@
             <h2> {{city.name}} </h2>
         </td>
         <td>
-            <a href="/cities/{{ city.id }}/edit"><i class="fas fa-edit" style="color: black;"></i></a>
+            <button class="btn btn--action">
+                <a href="/cities/{{ city.id }}/edit"><i class="fas fa-edit" style="color: black;"></i></a>
+            </button>
         </td>
         <td>
             <form action="/cities/{{ city.id }}/delete" method="POST">

@@ -11,10 +11,19 @@
             <h2> {{country.name}} </h2>
         </td>
         <td>
-            <a href="/countries/{{ country.id }}/edit"><i class="fas fa-edit" style="color: black;"></i></a>
+            <button class="btn btn--action">
+                <a href="/countries/{{ country.id }}/edit"><i class="fas fa-edit" style="color: black;"></i></a>
+            </button>
         </td>
         <td>
-            {{country.visited}}
+            <div class="not-visited" style="display: {{ 'none' if country.visited == true }};">
+                <i class="fas fa-times" style="color: red"></i>
+                <label for="visited">Not Visited</label>
+            </div>
+            <div class="visited" style="display: {{ 'none' if country.visited == false }};">
+                <i class="fas fa-check-circle" style="color: green"></i>
+                <label for="visited">Visited</label>
+            </div>
         </td>
         <td>
             <form action="/countries/{{ country.id }}/delete" method="POST">
@@ -23,40 +32,40 @@
         </td>
     </tr>
 </table>
-<!-- visited status checkbox -->
 <hr>
-<div>
+<!-- ADD City button -->
+<div class="add-container">
     <button type="button" class="btn btn--action">
         <a href="/cities/{{ country.id }}/new"><i class="fas fa-plus-square" style="color: orange;"></i></a>
     </button>
+    <h4>Add City to list</h4>
 </div>
+<!-- List of Cities -->
 {% for city in cities %}
-<section>
-    <table>
-        <tr>
-            <td>
-                <a href="/cities/{{ city.id }}">{{ city.name }}</a>
-            </td>
-            <td>
-                <p>{{ city.comment }}</p>
-            </td>
-            <td>
-                <div class="not-visited" style="display: {{ 'none' if city.visited == true }};">
-                    <i class="fas fa-times" style="color: red"></i>
-                    <label for="visited">Not Visited</label>
-                </div>
-                <div class="visited" style="display: {{ 'none' if city.visited == false }};">
-                    <i class="fas fa-check-circle" style="color: green"></i>
-                    <label for="visited">Visited</label>
-                </div>
-            </td>
-            <td>
-                <form action="/cities/{{ city.id }}/delete" method="POST">
-                    <button type="submit" class="btn btn--action"><i class="fas fa-trash-alt" style="color: red;"></i></button>
-                </form>
-            </td>
-        </tr>
-    </table>
+<section style="border-color: {{ 'green' if city.visited == true else 'red'}};">
+    <div class="panel-container">
+        <div class="place-link">
+            <a href="/cities/{{ city.id }}">{{ city.name }}</a>
+        </div>
+        <div class="comment-container">
+            <p>{{ city.comment }}</p>
+        </div>
+        <div class="visit">
+            <div class="not-visited" style="display: {{ 'none' if city.visited == true }};">
+                <i class="fas fa-times" style="color: red"></i>
+                <label for="visited">Not Visited</label>
+            </div>
+            <div class="visited" style="display: {{ 'none' if city.visited == false }};">
+                <i class="fas fa-check-circle" style="color: green"></i>
+                <label for="visited">Visited</label>
+            </div>
+        </div>
+        <div class="trash">
+            <form action="/cities/{{ city.id }}/delete" method="POST">
+                <button type="submit" class="btn btn--action"><i class="fas fa-trash-alt" style="color: red;"></i></button>
+            </form>
+        </div>
+    </div>
 </section>
 <hr>
 {% endfor %}
