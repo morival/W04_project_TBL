@@ -36,8 +36,19 @@
 </div>
 <hr>
 <!-- comment -->
-<h4>Comment</h4>
-{{ city.comment }}
+<input type="checkbox" class="show comment" id="comment">
+<button class="btn btn--action">
+    <label for="comment"><i class="fas fa-comment-dots"></i></label>
+</button>
+<div class="hide">
+    <form action="/cities/{{ city.id }}/comment" method="POST">
+        <textarea name="comment" id="comment" cols="30" rows="10">{{ city.comment }}</textarea>
+        <button type="submit" class="btn btn--action">
+            <i class="far fa-plus-square" style="color: rgb(28, 111, 28);"></i>
+        </button>
+    </form>
+</div>
+
 <hr>
 <h4>Sights:</h4>
 <ul>

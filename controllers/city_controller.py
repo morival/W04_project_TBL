@@ -79,7 +79,7 @@ def update_city(id):
     country_id = city.country.id
     country = country_repository.select(country_id)
     visited = city.visited
-    comment = request.form['comment']
+    comment = city.comment
     updated_city = City(name, country, visited, comment, id)
     city_repository.update(updated_city)
     return redirect(f"/cities/{city_id}")
@@ -98,6 +98,20 @@ def visit(id):
     city_repository.update(visit_city)
     visit_city.country.visited = True
     country_repository.update(visit_city.country)
+    return redirect(f"/cities/{city_id}")
+
+
+    # COMMENT
+@cities_blueprint.route("/cities/<id>/comment", methods=['POST'])
+def comment(id):
+    city = city_repository.select(id)
+    city_id = city.id
+    name = city.name
+    country = city.country
+    visited = city.visited
+    comment = request.form['comment']
+    commented_city = City(name, country, visited, comment, id)
+    city_repository.update(commented_city)
     return redirect(f"/cities/{city_id}")
 
 

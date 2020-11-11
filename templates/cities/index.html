@@ -36,6 +36,15 @@
       <div class="place-link">
         <a href="/cities/{{ city.id }}">{{ city.name }}</a>
       </div>
+      <div class="comment-container">
+        <input type="checkbox" class="show comment" id="comment{{ city.id }}">
+        <button class="btn btn--action">
+            <label for="comment{{ city.id }}"><i class="fas fa-comment-dots"></i></label>
+        </button>
+        <div class="hide cloud">
+            <p>{{ city.comment }}</p>
+        </div>
+      </div>
       <div class="visit">
         <div class="not-visited" style="display: {{ 'none' if city.visited == true }};">
           <i class="fas fa-times" style="color: red"></i>
@@ -45,9 +54,6 @@
           <i class="fas fa-check-circle" style="color: green"></i>
           <label for="visited">Visited</label>
         </div>
-      </div>
-      <div class="comment-container">
-        {{ city.comment }} 
       </div>
       <div class="trash">
         <form action="/cities/{{ city.id }}/delete" method="POST">

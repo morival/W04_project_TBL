@@ -7,12 +7,19 @@ body {
 }
 .menu > li {
     margin: 2px;
-    background-color: rgb(237, 150, 87);
+    background-color: rgb(212, 239, 250);
+    border-style: solid;
+    border-color: dodgerblue;
+    border-width: 3px;
     border-radius: 10px;
 }
 .menu > li a {
     text-decoration: none;
     padding: 7px;
+}
+.menu > li a:hover {
+    font-weight: bold;
+    color: black;
 }
 h1 {
     margin-left: 15px;
@@ -68,7 +75,7 @@ h1 {
 }
 section {
     background-color: rgb(255, 144, 103);
-    width: 550px;
+    width: 700px;
     border-style: solid;
     border-width: 4px;
     /* border-color:red; */
@@ -125,6 +132,7 @@ section {
 }
 .comment-container {
     height: 50px;
+    display: flex;
 }
 .visited {
     display: flex;
@@ -140,6 +148,32 @@ section {
 .trash {
     margin-right: 10px;
 }
+/* Edit */
+.confirm-btn {
+    display: flex;
+    justify-content: flex-end;
+}
+.show {display:none;}
+.hide {display:none;}
+    
+.hide p {
+    margin: 0;
+    padding: 6px;
+    overflow-y: scroll;
+}
+.cloud {
+    background-color: white;
+    border-style: ridge;
+    border-color: skyblue;
+    border-radius: 30px;
+    margin: 0 6px;
+    overflow-y: scroll;
+}
+.show:checked~.hide{display:block;}
+
+#show-search,#hide-search{display:none;}
+#show-search:checked~#hide-search{display:block;}
+
 #show,#content{display:none;}
 #show:checked~#content{display:block;}
 
