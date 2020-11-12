@@ -27,37 +27,41 @@
 {% for city in visited_cities %}
 <section style="border-color: {{ 'green' if city.visited == true else 'red'}};">
   <div class="panel-container">
-      <div class="country-container">
-        <h4>({{ city.country.name }})</h4> 
-      </div>
-      <div class="place-link">
-        <a href="/cities/{{ city.id }}">{{ city.name }}</a>
-      </div>
-      <div class="comment-container">
-        <input type="checkbox" class="show comment" id="comment{{ city.id }}">
-        <button class="btn btn--action">
-            <label for="comment{{ city.id }}"><i class="fas fa-comment-dots"></i></label>
-        </button>
-        <div class="hide cloud">
-            <p>{{ city.comment }}</p>
+      <div class="left-side">
+        <div class="country-container">
+          <h4>({{ city.country.name }})</h4> 
+        </div>
+        <div class="place-link">
+          <a href="/cities/{{ city.id }}">{{ city.name }}</a>
         </div>
       </div>
-      <div class="visit">
-        <div class="not-visited" style="display: {{ 'none' if city.visited == true }};">
-          <i class="fas fa-times" style="color: red"></i>
-          <label for="visited">Not Visited</label>
-        </div>
-        <div class="visited" style="display: {{ 'none' if city.visited == false }};">
-          <i class="fas fa-check-circle" style="color: green"></i>
-          <label for="visited">Visited</label>
-        </div>
-      </div>
-      <div class="trash">
-        <form action="/cities/{{ city.id }}/delete" method="POST">
-          <button type="submit" class="btn btn--action">
-            <i class="fas fa-trash-alt" style="color: red;"></i>
+      <div class="right-side">
+        <div class="comment-container">
+          <input type="checkbox" class="show comment" id="comment{{ city.id }}">
+          <button class="btn btn--action">
+              <label for="comment{{ city.id }}"><i class="fas fa-comment-dots white"></i></label>
           </button>
-        </form>
+          <div class="hide cloud">
+              <p>{{ city.comment }}</p>
+          </div>
+        </div>
+        <div class="visit">
+          <div class="not-visited" style="display: {{ 'none' if city.visited == true }};">
+            <i class="fas fa-times" style="color: red"></i>
+            <label for="visited">Not Visited</label>
+          </div>
+          <div class="visited" style="display: {{ 'none' if city.visited == false }};">
+            <i class="fas fa-check-circle" style="color: green"></i>
+            <label for="visited">Visited</label>
+          </div>
+        </div>
+        <div class="trash">
+          <form action="/cities/{{ city.id }}/delete" method="POST">
+            <button type="submit" class="btn btn--action">
+              <i class="fas fa-trash-alt" style="color: red;"></i>
+            </button>
+          </form>
+        </div>
       </div>
   </div>
 </section>

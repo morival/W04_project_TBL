@@ -3,13 +3,13 @@ import pdb
 from models.city import City
 from models.country import Country
 from models.continent import Continent
-# from models.sight import Sight
+from models.sight import Sight
 
 
 import repositories.city_repository as city_repository
 import repositories.country_repository as country_repository
 import repositories.continent_repository as continent_repository
-# import repositories.sight_repository as sight_repository
+import repositories.sight_repository as sight_repository
 
 
 

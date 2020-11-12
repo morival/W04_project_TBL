@@ -3,6 +3,7 @@ from models.country import Country
 import repositories.country_repository as country_repository
 import repositories.continent_repository as continent_repository
 import repositories.city_repository as city_repository
+import repositories.sight_repository as sight_repository
 
 countries_blueprint = Blueprint("countries", __name__)
 
@@ -18,9 +19,10 @@ def countries():
     # SHOW
 @countries_blueprint.route("/countries/<id>")
 def show_country(id):
+    sights = sight_repository.sights(id)
     cities = city_repository.cities(id)
     country = country_repository.select(id)
-    return render_template("countries/show.html", country=country, cities=cities)
+    return render_template("countries/show.html", country=country, cities=cities, sights=sights)
 
 
     # NEW

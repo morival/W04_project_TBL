@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, Blueprint
 from models.sight import Sight
 import repositories.sight_repository as sight_repository
 import repositories.city_repository as city_repository
+import repositories.country_repository as country_repository
 
 sights_blueprint = Blueprint("sights", __name__)
 
@@ -45,13 +46,13 @@ def not_visited_sights():
     # NEW 
 @sights_blueprint.route("/sights/<id>/new")
 def new_sight(id):
-    city = city_repository.select(id)
+    sel_city = city_repository.select(id)
     cities = city_repository.select_all()
-    return render_template("sights/new.html", city=city, cities=cities)
+    return render_template("sights/new.html", sel_city=sel_city, cities=cities)
 
 
     # CREATE
-@sights_blueprint.route("/sight", methods=['POST'])
+@sights_blueprint.route("/sights", methods=['POST'])
 def create_sight():
     name = request.form['name']
     city_id = request.form['city_id']
@@ -98,6 +99,8 @@ def visit(id):
     sight_repository.update(visit_sight)
     visit_sight.city.visited = True
     city_repository.update(visit_sight.city)
+    visit_sight.city.country.visited = True
+    country_repository.update(visit_sight.city.country)
     return redirect(f"/sights/{sight_id}")
 
 

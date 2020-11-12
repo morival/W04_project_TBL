@@ -2,24 +2,24 @@
 
 {% block content %}
 
-<h2>Add New City</h2>
+<h2>Add New Sight</h2>
 
-<form action="/cities" method="POST">
-  <!-- country dropbox -->
-  <label for="country">Select a Country:</label>
-    <select name="country_id" id="country">
-        {% for country in countries %}
-        <option value="{{ country.id }}" {% if sel_country.id == country.id %}
+<form action="/sights" method="POST">
+  <!-- cities dropbox -->
+  <label for="cities">Select a City:</label>
+    <select name="city_id" id="city">
+        {% for city in cities %}
+        <option value="{{ city.id }}" {% if sel_city.id == city.id %}
           selected="selected"
         {% endif %}>
-          {{ country.name }}
+          {{ city.name }}
         </option>
         {% endfor %}
     </select>
     <br>
   <!-- name field -->
     <div class="central">
-      <label for="name">Name of the City:</label>
+      <label for="name">Name of the Sight:</label>
       <input type="text" id="name" name="name" required autofocus>
       <button type="submit" class="btn btn--action">
         <i class="far fa-plus-square" style="color: rgb(28, 111, 28);"></i>

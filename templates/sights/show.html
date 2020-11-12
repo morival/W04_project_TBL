@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Sight line -->
+<div class="place-bar">
+    <div class="left-side">
+        <div class="return-btn">
+            <a href="/cities/{{ sight.city.id }}">({{ sight.city.name }})</a>
+        </div>
+        <div>
+            <h2> {{sight.name}} </h2>
+        </div>
+    </div>
+    <div class="right-side">
+        <div class="visit">
+            <div class="not-visited" style="display: {{ 'none' if sight.visited == true }};">
+                <i class="fas fa-times" style="color: red"></i>
+                <label for="visited">Not Visited</label>
+                <form action="/sights/{{ sight.id }}/visit" method="POST">
+                    <button class="btn btn--action" type="submit">
+                        <i class="fas fa-exchange-alt" style="color: green;"></i>
+                    </button>
+                </form>
+            </div>
+            <div class="visited" style="display: {{ 'none' if sight.visited == false }};">
+                <i class="fas fa-check-circle" style="color: green"></i>
+                <label for="visited">Visited</label>
+            </div>
+        </div>
+        <div>
+            <button class="btn btn--action">
+                <a href="/sights/{{ sight.id }}/edit"><i class="fas fa-edit" style="color: black;"></i></a>
+            </button>
+        </div>
+        <div>
+            <form action="/sights/{{ sight.id }}/delete" method="POST">
+                <button type="submit" class="btn btn--action"><i class="fas fa-trash-alt" style="color: red;"></i></button>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- visited status -->
+
+<hr>
+<!-- comment -->
+<input type="checkbox" class="show comment" id="comment">
+<button class="btn btn--action">
+    <label for="comment"><i class="fas fa-comment-dots white"></i></label>
+</button>
+<div class="hide">
+    <form action="/sights/{{ sight.id }}/comment" method="POST">
+        <textarea name="comment" id="comment" cols="30" rows="10">{{ sight.comment }}</textarea>
+        <button type="submit" class="btn btn--action">
+            <i class="far fa-plus-square" style="color: rgb(28, 111, 28);"></i>
+        </button>
+    </form>
+</div>
+
+
+{% endblock %}

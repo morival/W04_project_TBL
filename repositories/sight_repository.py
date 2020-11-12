@@ -7,7 +7,7 @@ import repositories.city_repository as city_repository
 
 def save(sight):
     sql = "INSERT INTO sights (name, city_id, visited, comment) VALUES ( %s, %s, %s, %s ) RETURNING id"
-    values = [sight.name, sight.country.id, sight.visited, sight.comment]
+    values = [sight.name, sight.city.id, sight.visited, sight.comment]
     results = run_sql( sql, values )
     sight.id = results[0]['id']
     return sight
@@ -51,7 +51,7 @@ def delete(id):
 
 def update(sight):
     sql = "UPDATE sights SET (name, city_id, visited, comment) = (%s, %s, %s, %s) WHERE id = %s"
-    values = [sight.name, sight.country.id, sight.visited, sight.comment, sight.id]
+    values = [sight.name, sight.city.id, sight.visited, sight.comment, sight.id]
     run_sql(sql, values)
 
 
