@@ -61,7 +61,7 @@ def create_sight():
     comment = request.form['comment']
     new_sight = Sight(name, city, visited, comment)
     sight_repository.save(new_sight)
-    return redirect(f"/sights/{city_id}")
+    return redirect(f"/cities/{city_id}")
 
 
     # EDIT
@@ -80,7 +80,7 @@ def update_sight(id):
     city_id = sight.city.id
     city = city_repository.select(city_id)
     visited = sight.visited
-    comment = request.form['comment']
+    comment = sight.comment
     updated_sight = Sight(name, city, visited, comment, id)
     sight_repository.update(updated_sight)
     return redirect(f"/sights/{sight_id}")
@@ -101,6 +101,20 @@ def visit(id):
     city_repository.update(visit_sight.city)
     visit_sight.city.country.visited = True
     country_repository.update(visit_sight.city.country)
+    return redirect(f"/sights/{sight_id}")
+
+
+    # COMMENT
+@sights_blueprint.route("/sights/<id>/comment", methods=['POST'])
+def comment(id):
+    sight = sight_repository.select(id)
+    sight_id = sight.id
+    name = sight.name
+    city = sight.city
+    visited = sight.visited
+    comment = request.form['comment']
+    commented_sight = Sight(name, city, visited, comment, id)
+    sight_repository.update(commented_sight)
     return redirect(f"/sights/{sight_id}")
 
 

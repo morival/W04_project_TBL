@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Edit Sight</h2>
+<h4>in {{ sight.city.name }}</h4>
+<form action="/sights/{{ sight.id }}" method="POST">
+    <div class="central">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" value="{{ sight.name }}">
+        <button type="submit" class="btn btn--action">
+            <i class="far fa-plus-square" style="color: rgb(28, 111, 28);"></i>
+        </button>
+    </div>
+</form>
+
+{% endblock %}

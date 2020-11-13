@@ -74,7 +74,8 @@ def search():
     continents = continent_repository.select_all()
     countries = country_repository.select_all()
     cities = city_repository.select_all()
-    return render_template("search.html",continents=continents, countries=countries, cities=cities)
+    sights = sight_repository.select_all
+    return render_template("search.html",continents=continents, countries=countries, cities=cities, sights=sights)
 
 
     # SEARCH RESULTS
@@ -82,10 +83,12 @@ def search():
 def search_results():
     search_country = []
     search_city = []
+    search_sight = []
     search_key = request.form['search']
     key = search_key.lower()
     countries = country_repository.select_all()
     cities = city_repository.select_all()
+    sights = sight_repository.select_all()
     for country in countries:
         if country.name.lower() == key:
             search_country.append(country)
@@ -94,7 +97,14 @@ def search_results():
             search_city.append(city)
         elif city.country.name.lower() == key:
             search_city.append(city)
-    return render_template("/search.html",countries=countries, cities=cities, search_city=search_city, search_country=search_country)
+    for sight in sights:
+        if sight.name.lower() == key:
+            search_sight.append(sight)
+        elif sight.city.name.lower() == key:
+            search_sight.append(sight)
+        elif sight.city.country.name.lower() == key:
+            search_sight.append(sight)
+    return render_template("search.html",countries=countries, cities=cities, sights=sights, search_sight=search_sight, search_city=search_city, search_country=search_country)
 
 
     # DELETE '/countries/<id>'
