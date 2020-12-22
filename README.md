@@ -1,6 +1,6 @@
 # W04_project_TBL
 <!--
-*** To avoid retyping too much info. Do a search and replace for the following:
+
 *** github_username, repo_name, twitter_handle, email, project_title, project_description
 -->
 
@@ -29,16 +29,9 @@
   <h3 align="center">Travel Bucket List</h3>
 
   <p align="center">
-    project_description
+    An app that tracks and helps to plan user’s travel adventures around the world.
     <br />
-    <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/github_username/repo_name">View Demo</a>
-    ·
-    <a href="https://github.com/github_username/repo_name/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/github_username/repo_name/issues">Request Feature</a>
+    <a href="https://github.com/morival/W04_project_TBL"><strong>Explore the docs »</strong></a>
   </p>
 </p>
 
@@ -75,18 +68,36 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+### The main purpose of the project was:
+* Object oriented programming with Python
+* Test Driven Development
+* Web Programming (REST, MVC)
+* Interacting with a PostgreSQL database (CRUD)
 
-Here's a blank template to get started:
-**To avoid retyping too much info. Do a search and replace with your text editor for the following:**
-`github_username`, `repo_name`, `twitter_handle`, `email`, `project_title`, `project_description`
+### Rules
+
+The project must be built using only:
+
+* HTML / CSS
+* Python
+* Flask
+* PostgreSQL and the psycopg package
+
+It must **NOT** use:
+
+* Any Object Relational Mapper (e.g. ActiveRecord)
+* JavaScript. At all. Don't even think about it.
+* Any pre-built CSS libraries, such as Bootstrap.
+* Authentication. Assume that the user already has secure access to the app.
 
 
 ### Built With
 
-* []()
-* []()
-* []()
+* [Python](https://www.python.org/)
+* [Flask](https://flask.palletsprojects.com/)
+* [PostgreSQL](https://www.postgresql.org/)
+* [HTML5](https://html.spec.whatwg.org/)
+* [CSS3](https://www.w3.org/TR/CSS/)
 
 
 
