@@ -26,7 +26,7 @@
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">Travel Bucket List</h3>
+  <h3 align="center">My Destination (Travel Bucket List Application)</h3>
 
   <p align="center">
     An app that tracks and helps to plan user’s travel adventures around the world.
