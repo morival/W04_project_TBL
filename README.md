@@ -22,7 +22,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/github_username/repo_name">
+  <a href="https://raw.githubusercontent.com/morival/W04_project_TBL/main/project_01.jpg">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
